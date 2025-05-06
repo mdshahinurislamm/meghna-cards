@@ -1,0 +1,30 @@
+{
+  "name": "larapresscms/larapress",
+  "description": "Experience the future of content management with LaraPress, a powerful and intuitive CMS built on Laravel. Designed to bring simplicity and flexibility to your fingertips, LaraPress is perfect for developers, businesses, and content creators alike.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+        "larapresscms/larapress": "dev-main@dev",
+        "php": "^7.4|^8.2"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/larapresscms/larapress" 
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LaraPressCMS\\LaraPress\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaraPressCMS\\LaraPress\\LaraServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
