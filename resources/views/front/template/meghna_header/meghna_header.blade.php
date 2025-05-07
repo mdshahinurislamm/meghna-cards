@@ -12,10 +12,19 @@
         </a>                
         <nav id="navmenu" class="navmenu">
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{url('/')}}">Home</a></li>
             <li class="dropdown"><a href="#"><span>Menu</span> <i
                 class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
+            @foreach(getAllPostsBy() as $post)
+            @foreach(getAllCategory() as $cat_post)                
+            @if($cat_post->id == $post->category_main_id)
+            <li class="nav-item"><a href="{{url($post->slug)}}">{{$post->name}}</a></li>
+            @endif
+            @endforeach   
+            @endforeach 
+
+
                 @foreach(getMenus() as $menu)
                 @if($menu->sub_menu_id == 0) 
                     <li class="nav-item">  
@@ -34,7 +43,7 @@
 
                 @guest()
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login')}}">login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/register')}}">Register</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/register')}}">Register</a></li> -->
                 @endguest
             </ul>
             </li>

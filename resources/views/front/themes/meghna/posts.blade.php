@@ -57,7 +57,7 @@
 
                 @if(count($matchedPosts))
                     <div class="row gy-4 justify-content-center text-center mb-5">
-                        <h5>{{ $cat_post->name }}</h5>
+                        <h3>{{ $cat_post->name }}</h3>
 
                         @foreach($matchedPosts as $post)
                             <!-- card -->
