@@ -1,9 +1,9 @@
 <?php
-/* Template Name: Meghna Slider
+/* Template Name: current-offer-slider
     Version: 1.0
 */
 ?>
-{{insertDummyData('meghna-slider',3)}}
+{{insertDummyData('current-offer-slider',3)}}
 
 <!-- Hero Section -->
 <section>
@@ -11,15 +11,15 @@
   data-bs-ride="carousel">
   <div class="carousel-inner banner-home">
   @php $cnt = 1; @endphp
-  @foreach(getPostsByType('meghna-slider') as $post)
+  @foreach(getPostsByType('current-offer-slider') as $post)
     <div class="carousel-item {{$cnt == 1 ? 'active':''}}" data-bs-interval="2000">
-      <div class="scrollit">
-        <a data-scroll="true" href="{{url('/posts/current-existing-offers')}}" class="btn btn-primary">
-          Current Existing Offers<svg version="1.1"
+      <!-- <div class="scrollit">
+        <a data-scroll="true" href="#ex-saving" class="btn btn-primary">
+          Explore Offers <svg version="1.1"
             xmlns="http://www.w3.org/2000/svg" width="32" height="32"
             viewBox="0 0 32 32"> <path fill="#00294f"
               d="M7.84 9.333l8.16 8.241 8.16-8.241 2.507 2.537-10.667 10.796-10.667-10.796 2.507-2.537z"></path></svg></a>
-      </div>
+      </div> -->
       <img src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}"
         class="d-block w-100" alt="...">
     </div>

@@ -1,14 +1,13 @@
 <?php
-/* Template Name: Meghna Type
+/* Template Name: Current Offer Type
     Version: 1.0
 */
 ?>   
     <section id="about" class="about section">
         <div class="container valetineiconbox">
             <div class="row gy-4 justify-content-center text-center">
-                
                 @foreach(getAllPosttype() as $post)
-                @if($post->category_main_id == 1)               
+                @if($post->category_main_id == 6)               
 
                 <!-- @foreach(getAllCategory() as $cat_post)                
                 @if($cat_post->id == $post->category_main_id)                 -->
