@@ -105,8 +105,8 @@ if (!function_exists('getPostsByType')) {
     }
 }
 //get post type
-if (!function_exists('getAllPostsBy')) {   
-    function getAllPostsBy()
+if (!function_exists('getAllPosttype')) {   
+    function getAllPosttype()
     {
         // Ensure the Post model is imported or use the fully qualified class name
         $post = Posttype::where('status', 1)->get();

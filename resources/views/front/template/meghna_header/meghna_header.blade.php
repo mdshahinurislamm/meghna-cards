@@ -16,7 +16,7 @@
             <li class="dropdown"><a href="#"><span>Menu</span> <i
                 class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-            @foreach(getAllPostsBy() as $post)
+            @foreach(getAllPosttype() as $post)
             @foreach(getAllCategory() as $cat_post)                
             @if($cat_post->id == $post->category_main_id)
             <li class="nav-item"><a href="{{url($post->slug)}}">{{$post->name}}</a></li>

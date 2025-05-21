@@ -1,9 +1,7 @@
 @extends('front.themes.meghna.layouts.master')
 @section('content')
 
-<section class="breadcrumb-area breadcrumb-bg"
-                data-background="{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}"
-                style="background-image: url(&quot;{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}&quot;);">
+<section class="breadcrumb-area breadcrumb-bg" data-background="{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}" style="background-image: url(&quot;{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}&quot;);">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -23,8 +21,65 @@
     </div>
 </section>
 
+ @php
+    $filteredPosts = collect(getAllPosttype())->filter(function($post) use ($posttype) {
+        return $post->menu_icon == $posttype->name;
+    });
+@endphp
+
+@if($filteredPosts->isNotEmpty())
+<section id="about" class="about section">
+    <div class="container valetineiconbox">
+        <div class="row gy-4 justify-content-center text-center"> 
+            @foreach($filteredPosts as $post)
+                <div class="col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{ url($post->slug) }}">
+                        <div class="valetineiconboxbg">
+                            <div class="valetineicon">
+                                {!! $post->pt_content !!}
+                            </div>
+                            <h4 class="text-uppercase">{{ $post->name }}</h4>
+                        </div>
+                    </a>
+                </div>
+            @endforeach  
+        </div>
+    </div>
+</section>
+@else
+
+<!-- @foreach(getAllPosttype() as $post1)
+    @if($post1->menu_icon == $posttype->name)      
+    @endif 
+@endforeach 
+@if($post1->menu_icon)  
+<section id="about1" class="about section">
+    <div class="container valetineiconbox">
+        <div class="row gy-4 justify-content-center text-center"> 
+            @foreach(getAllPosttype() as $post)
+                @if($post->menu_icon == $posttype->name)        
+                <div class="col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{url($post->slug)}}">
+                        <div class="valetineiconboxbg">
+                            <div class="valetineicon">
+                                {!! $post->pt_content !!}
+                            </div>
+                            <h4 class="text-uppercase">{{$post->name}}</h4>
+                        </div>
+                    </a>
+                </div>
+                @endif 
+            @endforeach  
+        </div>
+    </div>
+</section>
+@else
+@endif     -->
+
+
+
             <!-- About Section -->
-            <section id="about" class="about section ">
+            <section id="about" class="about section">
                 <div class="sear_offer">
                     <form>
                         <label for="input">Search</label>
@@ -105,16 +160,10 @@
                         @endforeach
                     </div>
                 @endif
-            @endforeach
-
-
-                    
-                </div>
-
-                
-
-
-                </section><!-- /About Section -->
+            @endforeach                    
+            </div> 
+        </section><!-- /About Section -->
+@endif
 
 <!-- @getTemplate($posttype->slug) -->
 @endsection      
