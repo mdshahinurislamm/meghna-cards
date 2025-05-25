@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 01:08 PM
+-- Generation Time: May 25, 2025 at 11:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -70,7 +70,8 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `status`, `created_at`, `updated
 (3, 'New', 'new', '1', '2025-05-06 03:55:57', '2025-05-06 03:55:57'),
 (4, 'Shahin', 'shahin', '1', '2025-05-06 04:12:50', '2025-05-06 04:12:50'),
 (5, 'category', 'category', '1', '2025-05-06 04:39:46', '2025-05-06 04:39:46'),
-(6, 'Current Offers', 'current-offers', '1', '2025-05-21 04:46:02', '2025-05-21 04:46:02');
+(6, 'Current Offers', 'current-offers', '1', '2025-05-21 04:46:02', '2025-05-21 04:46:02'),
+(7, 'Cards Type', 'cards-type', '1', '2025-05-24 23:51:14', '2025-05-24 23:51:14');
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,10 @@ INSERT INTO `media` (`id`, `img_name`, `created_at`, `updated_at`) VALUES
 (3, '2025/05/6819b4c0bddf6_banner3.webp', '2025-05-06 01:05:36', '2025-05-06 01:05:36'),
 (4, '2025/05/6819b4f1b5f5b_banner1.webp', '2025-05-06 01:06:25', '2025-05-06 01:06:25'),
 (5, '2025/05/6819d122debe0_Dining-black.png', '2025-05-06 03:06:42', '2025-05-06 03:06:42'),
-(6, '2025/05/6819d63f5d2c7_FOODPANDA.jpg', '2025-05-06 03:28:31', '2025-05-06 03:28:31');
+(6, '2025/05/6819d63f5d2c7_FOODPANDA.jpg', '2025-05-06 03:28:31', '2025-05-06 03:28:31'),
+(7, '2025/05/6832ad84a235e_main-banner1.jpg', '2025-05-24 23:41:24', '2025-05-24 23:41:24'),
+(8, '2025/05/6832ae194c448_590183_banner3.jpg', '2025-05-24 23:43:53', '2025-05-24 23:43:53'),
+(9, '2025/05/6832cc5d1cf9d_Silver-Card.png', '2025-05-25 01:53:01', '2025-05-25 01:53:01');
 
 -- --------------------------------------------------------
 
@@ -185,6 +189,17 @@ CREATE TABLE `menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `user_id`, `category_id`, `position`, `sub_menu_id`, `title`, `url`, `target`, `status`, `created_at`, `updated_at`) VALUES
+(3, 1, 0, NULL, '0', 'Credit Cards', '#', '_self', '1', '2025-05-24 23:18:12', '2025-05-24 23:18:12'),
+(4, 1, 0, NULL, '0', 'Debit Cards', '#', '_self', '1', '2025-05-24 23:18:24', '2025-05-24 23:18:24'),
+(5, 1, 0, NULL, '0', 'Prepaid Cards', '#', '_self', '1', '2025-05-24 23:18:37', '2025-05-24 23:18:37'),
+(6, 1, 0, NULL, '0', 'Card Offers', '#', '_self', '1', '2025-05-24 23:18:47', '2025-05-24 23:18:47'),
+(7, 1, 0, NULL, '0', 'Digital Service Desk', '#', '_self', '1', '2025-05-24 23:18:53', '2025-05-24 23:18:53');
 
 -- --------------------------------------------------------
 
@@ -295,8 +310,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `position`, `user_id`, `category_id`, `title`, `slug`, `content`, `content_css`, `excerpt`, `thumbnail_path`, `post_type`, `status`, `option_1`, `option_2`, `option_3`, `option_4`, `more_option_1`, `more_option_2`, `gallery_img`, `template`, `trash`, `created_at`, `updated_at`) VALUES
-(1, NULL, 1, '', 'Copyright', 'copyright', '<div class=\"social-links d-flex\" style=\"justify-content: center;\"><a><i class=\"bi bi-twitter-x\"></i></a> <a><i class=\"bi bi-facebook\"></i></a> <a><i class=\"bi bi-instagram\"></i></a> <a><i class=\"bi bi-linkedin\"></i></a></div>', NULL, NULL, NULL, 'footer', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 00:02:57', '2025-05-06 22:24:02'),
-(9, 1, 1, '', 'Home Page', 'home-page', NULL, NULL, NULL, NULL, 'posts', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', 'meghna_slider,meghna_type', NULL, '2025-05-06 00:52:25', '2025-05-07 00:40:01'),
+(1, NULL, 1, '', 'Copyright', 'copyright', '<ul>\r\n<li><a href=\"#\">Card FAQ</a></li>\r\n<li><a href=\"#\">Services</a></li>\r\n<li><a href=\"#\">Terms of service</a></li>\r\n<li><a href=\"#\">Privacy policy</a></li>\r\n</ul>', NULL, NULL, NULL, 'footer', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 00:02:57', '2025-05-24 23:28:29'),
+(9, 3, 1, '', 'Home Page', 'home-page', NULL, NULL, NULL, NULL, 'posts', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', 'meghna_slider,meghna_type', NULL, '2025-05-06 00:52:25', '2025-05-25 00:30:31'),
 (10, NULL, 1, '', 'Slider 1', 'test', '<p>testset</p>', NULL, NULL, '2025/05/6819b4c0bddf6_banner3.webp', 'meghna-slider', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 01:00:25', '2025-05-06 01:05:56'),
 (11, NULL, 1, '', 'Slider 2', 'slider-2', NULL, NULL, NULL, '2025/05/6819b4f1b5f5b_banner1.webp', 'meghna-slider', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 01:06:32', '2025-05-06 01:06:32'),
 (12, 1, 1, '2,3,4', '20% SAVINGS', 'test-1', '<div class=\"modal-header\">\r\n<h5 class=\"modal-title\" id=\"offer_modal_title\">FOODPANDa</h5>\r\n</div>\r\n<div class=\"modal-body\">\r\n<div class=\"modal-detail\">\r\n<p><b>OFFER</b>:</p>\r\n<p>20% SAVINGS UP TO BDT 150 PER TRANSACTION WITH A MINIMUM ORDER OF BDT 499 FOR CITY BANK AMERICAN EXPRESS PLATINUM, GOLD AND BLUE CREDIT CARDS AND CITYMAXX CARD. APPLICABLE FOR TWO TRANSACTIONS ONLY.<br /><strong>FOR PANDAMART:</strong><span>&nbsp;</span>12% SAVINGS UP TO BDT 250/TRANSACTION WITH A MINIMUM TRANSACTION OF BDT 2000. APPLICABLE FOR TWO TRANSACTIONS ONLY.<br />FOR LAST 5 DAYS OF RAMADAN BDT 500 ON TRANSACTION OF ABOVE BDT 5,000. APPLICABLE FOR ONE TRANSACTION ONLY AND VALID FOR CITY BANK AMERICAN EXPRESS PLATINUM, GOLD &amp; BLUE CREDIT CARDS</p>\r\n</div>\r\n<p><b>WEB:<span>&nbsp;</span></b><a href=\"https://www.foodpanda.com.bd/\">https://www.foodpanda.com.bd/</a></p>\r\n<b>VALIDITY:</b><span>&nbsp;</span>TILL THE EVE OF EID-UL-FITR 2025\r\n<p><b>Eligible Cards</b><span>&nbsp;</span>: CITY BANK AMERICAN EXPRESS PLATINUM, GOLD, BLUE, CITYMAXX CARD AND CITY ALO CREDIT CARDS.</p>\r\n</div>', NULL, 'https://dev.ailservers.com/elegant.com.bd/garments-apparels', '2025/05/6819d63f5d2c7_FOODPANDA.jpg', 'dining-offers', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 02:16:11', '2025-05-07 00:40:32'),
@@ -305,7 +320,12 @@ INSERT INTO `posts` (`id`, `position`, `user_id`, `category_id`, `title`, `slug`
 (21, NULL, 1, ',4', 'Shahin', 'shahin', NULL, NULL, NULL, '2025/05/6819d122debe0_Dining-black.png', 'dining-offers', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 04:12:25', '2025-05-06 04:12:50'),
 (22, NULL, 1, ',5', 'test', 'test-2', NULL, NULL, NULL, NULL, 'online-offers', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-06 04:39:15', '2025-05-06 04:39:46'),
 (23, 2, 1, '', 'Current Existing Offers', 'current-existing-offers', NULL, NULL, NULL, NULL, 'posts', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', 'meghna_slider_current,meghna_type_current', NULL, '2025-05-21 04:26:18', '2025-05-21 04:32:32'),
-(24, NULL, 1, '', 'Dummy Post', 'dummy-post', NULL, NULL, NULL, '2025/05/6819b4f1b5f5b_banner1.webp', 'current-offer-slider', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-21 04:29:12', '2025-05-21 04:29:39');
+(24, NULL, 1, '', 'Dummy Post', 'dummy-post', NULL, NULL, NULL, '2025/05/6819b4f1b5f5b_banner1.webp', 'current-offer-slider', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-21 04:29:12', '2025-05-21 04:29:39'),
+(27, 1, 1, '', 'Cards', 'cards', NULL, NULL, NULL, NULL, 'posts', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', 'meghna_slider_cards,meghna_type_cards', NULL, '2025-05-24 23:32:52', '2025-05-25 00:30:16'),
+(31, NULL, 1, '', 'slider 1', 'slider-1', NULL, NULL, NULL, '2025/05/6832ad84a235e_main-banner1.jpg', 'meghna-slider-cards', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-24 23:41:28', '2025-05-24 23:41:28'),
+(32, NULL, 1, '', 'slider 2', 'slider-2-1', NULL, NULL, NULL, '2025/05/6832ae194c448_590183_banner3.jpg', 'meghna-slider-cards', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-24 23:43:57', '2025-05-24 23:43:57'),
+(33, NULL, 1, '', 'test', 'test-3', NULL, NULL, NULL, NULL, 'all-in-one', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2025-05-25 01:23:47', '2025-05-25 01:23:47'),
+(34, NULL, 1, '7', 'Creadit Card', 'asdfs', '<div class=\"col-lg-4\">\r\n<h3 class=\"upper text-white pb-3\">Silver Credit Card</h3>\r\n<ul class=\"text-white\">\r\n<li style=\"text-align: justify;\">Go ahead with Meghna VISA Silver Credit Card for reliability and greater convenience which is accepted worldwide.</li>\r\n<li style=\"text-align: justify;\">Card Limit BDT 0.30 Lacs to BDT 0.75 Lacs.</li>\r\n<li style=\"text-align: justify;\">EMV chip-based card.</li>\r\n<li style=\"text-align: justify;\">Wide range of Discounts, EMI &amp; B1G1 Free facilities.</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-lg-4\"><img src=\"http://localhost/meghna/public/uploads/2025/05/6832cc5d1cf9d_Silver-Card.png\" class=\"img-fluid rounded \" alt=\"\" /></div>', NULL, 'EEEEEEEEE', '2025/05/6832cc5d1cf9d_Silver-Card.png', 'all-in-one', '1', NULL, NULL, NULL, NULL, NULL, '<!-- card -->\r\n<div class=\"card p-0 hover01\">\r\n<figure><img class=\"card-img-top\" src=\"https://picsum.photos/300/200?image=244\" /></figure>\r\n<div class=\"card-body \">\r\n<h5 class=\"card-title text-center text-white\">Welcome Benefits</h5>\r\n<p class=\"card-text text-white\">Start every year of your Cardmembership with rewards tailored to your lifestyle. Enjoy an exclusive BDT 20,000 welcome gift voucher.</p>\r\n</div>\r\n</div>\r\n<!-- End card -->\r\n<p></p>\r\n<!-- card -->\r\n<div class=\"card p-0 hover01\">\r\n<figure><img class=\"card-img-top\" src=\"https://picsum.photos/300/200?image=244\" /></figure>\r\n<div class=\"card-body \">\r\n<h5 class=\"card-title text-center text-white\">Credit Cards</h5>\r\n<p class=\"card-text text-white\">Go ahead with Meghna VISA Platinum Credit Card for a higher limit, esteem services, and prominent facilities which is accepted worldwide &amp; ensures maximum purchasing power.</p>\r\n</div>\r\n</div>\r\n<!-- End card -->\r\n<p></p>\r\n<!-- card -->\r\n<div class=\"card p-0 hover01\">\r\n<figure><img class=\"card-img-top\" src=\"https://picsum.photos/300/200?image=244\" /></figure>\r\n<div class=\"card-body \">\r\n<h5 class=\"card-title text-center text-white\">Credit Cards</h5>\r\n<p class=\"card-text text-white\">Go ahead with Meghna VISA Platinum Credit Card for a higher limit, esteem services, and prominent facilities which is accepted worldwide &amp; ensures maximum purchasing power.</p>\r\n</div>\r\n</div>\r\n<!-- End card -->\r\n<p></p>\r\n<!-- card -->\r\n<div class=\"card p-0 hover01\">\r\n<figure><img class=\"card-img-top\" src=\"https://picsum.photos/300/200?image=244\" /></figure>\r\n<div class=\"card-body \">\r\n<h5 class=\"card-title text-center text-white\">Credit Cards</h5>\r\n<p class=\"card-text text-white\">Go ahead with Meghna VISA Platinum Credit Card for a higher limit, esteem services, and prominent facilities which is accepted worldwide &amp; ensures maximum purchasing power.</p>\r\n</div>\r\n</div>\r\n<!-- End card -->', '2025/05/6832ae194c448_590183_banner3.jpg', NULL, NULL, '2025-05-25 01:23:54', '2025-05-25 02:24:28');
 
 -- --------------------------------------------------------
 
@@ -353,9 +373,12 @@ INSERT INTO `posttypes` (`id`, `user_id`, `category_main_id`, `name`, `slug`, `p
 (2, 1, 0, 'Footer', 'footer', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '0', NULL, '0', NULL, 0, '2025-05-06 00:02:57', '2025-05-06 22:21:06'),
 (4, 1, 0, 'Meghna Slider', 'meghna-slider', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '1', NULL, '0', NULL, 0, '2025-05-06 00:47:27', '2025-05-06 00:49:03'),
 (5, 1, 0, 'Posts', 'posts', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '0', NULL, '0', NULL, 1, '2025-05-06 00:49:52', '2025-05-07 00:36:39'),
-(6, 1, 1, 'Dining Offers', 'dining-offers', '<p><img src=\"http://localhost/meghna/public/uploads/2025/05/6819d122debe0_Dining-black.png\" width=\"100\" height=\"100\" alt=\"\" /></p>', NULL, '2025/05/6819b4f1b5f5b_banner1.webp', '1', 'Category', 'Title', 'Editor', 'URL', 'Image', '#', '#', '#', '#', '#', '#', '#', NULL, '0', NULL, '0', NULL, 1, '2025-05-06 01:15:30', '2025-05-21 04:20:39'),
-(9, 1, 6, 'Online Offers', 'online-offers', '<p><img src=\"http://localhost/meghna/public/uploads/2025/05/6819d122debe0_Dining-black.png\" width=\"100\" height=\"100\" alt=\"\" /></p>', NULL, '2025/05/6819b4c0bddf6_banner3.webp', '1', 'category', 'Title', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', NULL, '1', 'Dining Offers', '1', NULL, 1, '2025-05-06 04:38:58', '2025-05-21 04:46:44'),
-(11, 1, 0, 'Current Offer Slider', 'current-offer-slider', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '1', NULL, '0', NULL, 0, '2025-05-21 04:29:12', '2025-05-21 04:30:09');
+(6, 1, 6, 'Dining Offers', 'dining-offers', '<p><img src=\"http://localhost/meghna/public/uploads/2025/05/6819d122debe0_Dining-black.png\" width=\"100\" height=\"100\" alt=\"\" /></p>', NULL, '2025/05/6819b4f1b5f5b_banner1.webp', '1', 'Category', 'Title', 'Editor', 'URL', 'Image', '#', '#', '#', '#', '#', '#', '#', NULL, '0', NULL, '0', NULL, 1, '2025-05-06 01:15:30', '2025-05-24 22:55:36'),
+(9, 1, 0, 'Online Offers', 'online-offers', '<p><img src=\"http://localhost/meghna/public/uploads/2025/05/6819d122debe0_Dining-black.png\" width=\"100\" height=\"100\" alt=\"\" /></p>', NULL, '2025/05/6819b4c0bddf6_banner3.webp', '1', 'category', 'Title', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', NULL, '1', NULL, '1', NULL, 1, '2025-05-06 04:38:58', '2025-05-25 00:35:56'),
+(11, 1, 0, 'Current Offer Slider', 'current-offer-slider', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '1', NULL, '0', NULL, 0, '2025-05-21 04:29:12', '2025-05-21 04:30:09'),
+(12, 1, 0, 'Meghna Slider Cards', 'meghna-slider-cards', NULL, NULL, NULL, '1', 'Categories', 'Title', 'Content', 'Excerpt', 'Thumbnail', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Optional Field', 'Gallery', NULL, '1', NULL, '0', NULL, 0, '2025-05-24 23:34:44', '2025-05-24 23:35:05'),
+(13, 1, 7, 'All In One', 'all-in-one', '<p><img src=\"http://localhost/meghna/public/uploads/2025/05/6832ad84a235e_main-banner1.jpg\" width=\"1920\" height=\"500\" alt=\"\" /></p>', NULL, '2025/05/6832ae194c448_590183_banner3.jpg', '1', 'Categories', 'Title', 'Editor', 'Excerpt', 'Images', '#', '#', '#', '#', '#', 'More', 'Banner', NULL, '0', NULL, '0', NULL, 1, '2025-05-24 23:55:30', '2025-05-25 02:19:43'),
+(14, 1, 7, 'mix', 'mix', NULL, NULL, '2025/05/6819b4c0bddf6_banner3.webp', '1', '#', 'Title', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', NULL, '0', NULL, '0', NULL, 1, '2025-05-25 00:03:28', '2025-05-25 00:35:13');
 
 -- --------------------------------------------------------
 
@@ -401,7 +424,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `site_title`, `sub_title`, `site_logo`, `fav_icon`, `dashboard_color`, `text_color`, `text_hover`, `theme_url`, `home_url`, `editor`, `header`, `footer`, `created_at`, `updated_at`) VALUES
-(1, 'Meghna Bank PLC', NULL, '2025/05/6819a3885c98b_main-logo.png', '2025/05/6819a5679cea2_favicon.png', '#ffffff', '#37256e', '#837f90', 'meghna', '9', 'classic', 'meghna_header', 'meghna_footer', '2025-05-05 23:51:23', '2025-05-07 00:39:29');
+(1, 'Meghna Bank PLC', NULL, '2025/05/6819a3885c98b_main-logo.png', '2025/05/6819a5679cea2_favicon.png', '#ffffff', '#37256e', '#837f90', 'meghna', '27', 'classic', 'meghna_header', 'meghna_footer', '2025-05-05 23:51:23', '2025-05-25 00:28:00');
 
 -- --------------------------------------------------------
 
@@ -565,7 +588,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -589,13 +612,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -613,13 +636,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `posttypes`
 --
 ALTER TABLE `posttypes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `settings`
