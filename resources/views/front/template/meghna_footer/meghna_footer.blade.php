@@ -6,12 +6,44 @@
 ?>
 </main>
 
-    <footer id="footer" class="footer accent-background">
+    <footer id="footer" class="footer footer-back">
       <div class="container copyright text-center ">
-        @foreach(getPostsByType('footer') as $post)
-        {!! $post->content !!}
-        @endforeach         
-        <p class="pt-3">&copy; <span>Copyright</span> {{date('Y')}} Meghna Bank PLC. All rights reserved.</p>
+
+        <div class="row">
+          <div class="col text-white text-start">
+            <p class="pt-3">&copy; <span>Copyright</span> {{date('Y')}} Meghna Bank PLC. All rights reserved.</p>
+          </div>
+          <div class="col-5 footer-links2 pt-3">
+            <ul>
+              @foreach(getPostsByType('footer') as $post)
+              {!! $post->content !!}
+              @endforeach    
+              
+            </ul>
+          </div>
+          <div class="col text-white">
+            <div class="social-links d-flex" style="justify-content: right;">
+              <a href><i class="bi bi-twitter-x"></i></a>
+              <a href><i class="bi bi-facebook"></i></a>
+              <a href><i class="bi bi-instagram"></i></a>
+              <a href><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
       </div>
     </footer>
     <!-- Scroll Top -->

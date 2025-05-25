@@ -8,21 +8,14 @@
     <div
         class="container position-relative d-flex align-items-center justify-content-between">       
         <a class="logo d-flex align-items-center" href="{{url('/')}}">
-            <img src="{{ getSetting('site_logo') == null ? asset('packages/larapress/src/Assets/admin/img/larapress.png') : asset('public/uploads/').'/'.getSetting('site_logo') }}" alt="@getSetting('site_title')" width="150px">
+            <img src="{{ getSetting('site_logo') == null ? asset('packages/larapress/src/Assets/admin/img/larapress.png') : asset('public/uploads/').'/'.getSetting('site_logo') }}" alt="@getSetting('site_title')">
         </a>                
-        <nav id="navmenu" class="navmenu">
+        <nav id="navmenu" class="navmenu show_but">
         <ul>
-            <li><a href="{{url('/')}}">Home</a></li>
-            <li class="dropdown"><a href="#"><span>Menu</span> <i
+            <!-- <li><a href="{{url('/')}}">Home</a></li> -->
+            <!-- <li class="dropdown"><a href="#"><span>Menu</span> <i
                 class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-            @foreach(getAllPosttype() as $post)
-            @foreach(getAllCategory() as $cat_post)                
-            @if($cat_post->id == $post->category_main_id)
-            <li class="nav-item"><a href="{{url($post->slug)}}">{{$post->name}}</a></li>
-            @endif
-            @endforeach   
-            @endforeach 
+            <ul> -->           
 
 
                 @foreach(getMenus() as $menu)
@@ -32,21 +25,10 @@
                         <a href="{{ $menu->target == 'external_link' ? $menu->url : url('/') . $menu->url }}" target="{{$menu->target}}" class="nav-link">{{$menu->title}}</a>    
                     </li>
                 @endif
-                @endforeach                 
-                @auth()
-                <li class="nav-item"><a class="nav-link" href="{{ url('/dashboard')}}">
-                    Profile ({{ optional(auth()->user())->name}})
-                    </a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/logout')}}">Logout</a></li>
-                @endauth
-
-                @guest()
-                <li class="nav-item"><a class="nav-link" href="{{ url('/login')}}">login</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" href="{{ url('/register')}}">Register</a></li> -->
-                @endguest
-            </ul>
-            </li>
+                @endforeach                               
+              <li><a class="e-button" href="#"> Apply Now</a></li>
+            <!-- </ul>
+            </li> -->
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
