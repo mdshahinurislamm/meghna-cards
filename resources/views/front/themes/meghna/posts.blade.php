@@ -12,7 +12,7 @@
   @foreach(getPostsByType('meghna-slider-cards') as $post)
     <div class="carousel-item {{$cnt == 1 ? 'active':''}}" data-bs-interval="2000">
       <div class="scrollit">
-        <a data-scroll="true" href="#ex-saving" class="btn btn-primary">
+        <a data-scroll="true" href="{{url('/posts/card-offers')}}" class="btn btn-primary">
           Explore Offers <svg version="1.1"
             xmlns="http://www.w3.org/2000/svg" width="32" height="32"
             viewBox="0 0 32 32"> <path fill="#00294f"
@@ -37,26 +37,65 @@
 </div>
 
 
+<!--<section>-->
+<!--    <div class="masonry">-->
+<!--        <div class="container cards_credit">-->
+<!--            @foreach(getPostsByType($posttype->slug) as $post)-->
+            <!-- card -->
+<!--            <div class="card " data-aos="fade-down"-->
+<!--         data-aos-easing="linear"-->
+<!--         data-aos-duration="1500" style="height:20%;">-->
+<!--                <a href="{{url($post->post_type,$post->slug)}}"> <img-->
+<!--                        src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}"-->
+<!--                        class="card-img-top"-->
+<!--                        alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title text-center"> {{$post->title}}</h5>-->
+<!--                        <p class="card-text">{{$post->excerpt}}</p>-->
+<!--                        <a href="{{url($post->post_type,$post->slug)}}"-->
+<!--                            class="btn btn-secondary text-white">Know-->
+<!--                            More</a></a>-->
+<!--                    </div>-->
+<!--            </div>-->
+            <!-- End card -->      
+<!--            @endforeach -->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+
 <section>
-    <div class="container cards_credit">
-        @foreach(getPostsByType($posttype->slug) as $post)
-        <!-- card -->
-        <div class="card ">
-            <a href="{{url($post->post_type,$post->slug)}}"> <img
-                    src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}"
-                    class="card-img-top"
-                    alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-center"> {{$post->title}} </h5>
-                    <p class="card-text">{{$post->excerpt}}</p>
-                    <a href="{{url($post->post_type,$post->slug)}}"
-                        class="btn btn-secondary text-white">Know
-                        More</a></a>
+  <div class="container cards_credit">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 d-flex justify-content-center">
+            <div class="{{getPostsByType($posttype->slug)->count() == 1? 'masonry1':'masonry'}}">
+                
+                
+                @foreach(getPostsByType($posttype->slug) as $post)
+                <!-- card -->
+                <div class="card" data-aos="fade-down"
+                     data-aos-easing="linear"
+                     data-aos-duration="1500">
+                    <a href="{{ url($post->post_type, $post->slug) }}">
+                        <img src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}"
+                             class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="{{ url($post->post_type, $post->slug) }}">
+                            <h5 class="card-title text-center">{{ $post->title }}</h5>
+                            <p class="card-text text-center">{{ $post->excerpt }}</p>
+                        </a>
+                        <a href="{{ url($post->post_type, $post->slug) }}"
+                           class="btn btn-secondary text-white">Know More</a>
+                    </div>
                 </div>
+                <!-- End card -->
+                @endforeach
+            </div>
         </div>
-        <!-- End card -->      
-        @endforeach 
-    </div>
+    </div>  
+  </div>
 </section>
 
 
@@ -65,8 +104,8 @@
 
 
 
-        <section class="breadcrumb-area breadcrumb-bg" data-background="{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}" style="background-image: url(&quot;{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}&quot;);">
-            <div class="container">
+        <div class="breadcrumb-area breadcrumb-bg" data-background="{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}" style="background-image: url(&quot;{!! asset('public/uploads/' . $posttype->pt_thumbnail_path) ?? '' !!}&quot;);">
+            <div class="container d-none">
                 <div class="row">
                     <div class="col-12">
                         <div class="breadcrumb-content">
@@ -83,7 +122,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         @php
             $filteredPosts = collect(getAllPosttype())->filter(function($post) use ($posttype) {
@@ -92,7 +131,7 @@
         @endphp
 
         @if($filteredPosts->isNotEmpty())
-        <section id="about" class="about section">
+        <section id="about" class="about section catStylept">
             <div class="container valetineiconbox">
                 <div class="row gy-4 justify-content-center text-center"> 
                     @foreach($filteredPosts as $post)
@@ -102,7 +141,7 @@
                                     <div class="valetineicon">
                                         {!! $post->pt_content !!}
                                     </div>
-                                    <h4 class="text-uppercase">{{ $post->name }}</h4>
+                                    <h4 class="text-uppercase">{{ $post->name }} </h4>
                                 </div>
                             </a>
                         </div>
@@ -144,14 +183,28 @@
 
                     <!-- About Section -->
                     <section id="about" class="about section">
-                        <div class="sear_offer">
-                            <form>
-                                <label for="input">Search</label>
+                        <!--<div class="sear_offer">-->
+                        <!--    <form>-->
+                        <!--        <label for="input">Search</label>-->
+                        <!--        <input required pattern=".*\S.*" autocomplete="off"-->
+                        <!--            type="text" class="input" id="input"-->
+                        <!--            onkeyup="instantSearch()">-->
+                        <!--        <span class="caret"></span>-->
+                        <!--    </form>-->
+                        <!--</div>-->
+                        
+                        
+                        
+                        <div class="search-box">
+                            <button class="btn-search"><img
+                                    src="{!! asset('public/uploads/search.png') ?? '' !!}"></button>
+                            <!--<input type="text" id="psearch" class="input-search"-->
+                            <!--    placeholder="Type to Search...">-->
+                                
                                 <input required pattern=".*\S.*" autocomplete="off"
-                                    type="text" class="input" id="input"
-                                    onkeyup="instantSearch()">
-                                <span class="caret"></span>
-                            </form>
+                                    type="text" class="input-search" id="input"
+                                    onkeyup="instantSearch()" placeholder="Type to Search...">
+                                
                         </div>
 
                         <!-- Section Title -->
@@ -180,15 +233,15 @@
 
                                         @foreach($matchedPosts as $post)
                                             <!-- card -->
-                                            <div class="col-lg-3 item-offer_search" data-aos="fade-up" data-aos-delay="100">
+                                            <div class="col-lg-3 col-sm-6 item-offer_search" data-aos-delay="100">
                                                 <div class="card card_offer">
                                                     <a href="{{$post->excerpt}}">
                                                         <div class="dining_upper">
                                                             <img src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}" alt>
                                                         </div>
                                                         <div class="dining_lowar">
-                                                            <h3>{{ $post->title ?? 'Post Title' }}</h3>
-                                                            <h2>{{ $post->title ?? 'Post Title' }}</h2>
+                                                            <h3>{{ (strlen($post->title) > 30) ? substr($post->title, 0, 30) . '...' : $post->title }}</h3>
+                                                            <h2>{{ $post->title ?? 'Post Title' }} </h2>
                                                         </div>
                                                     </a>
                                                     <div class="dining_bottom">
@@ -209,7 +262,7 @@
                                                                 data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
+                                                        <div class="modal-body custom_modall">
                                                             {!! $post->content !!}
                                                         </div>
                                                         <div class="modal-footer">

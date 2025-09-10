@@ -1,5 +1,8 @@
 @extends('front.themes.meghna.layouts.master')
 @auth()
+<style>
+    .login .headerm_top{margin-top: 38px;}
+</style>
 <!--toplabel menu -->
 <div class="navbar-dark bg-dark fixed-top py-2">
     <div class="container text-center">
@@ -25,7 +28,7 @@
             @if($imgid)
                  <div class="carousel-item active" data-bs-interval="2000">
                     <div class="scrollit">
-                        <a data-scroll="true" href="#ex-saving"
+                        <a data-scroll="true" href="{{url('/posts/card-offers')}}"
                             class="btn btn-primary">
                             Explore Offers <svg version="1.1"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -56,9 +59,15 @@
 <!-- About Section -->
 <section id="gray_card">
     <div class="container ">
-        <div class="row justify-content-center">
-            <style>{!! $post->content_css ?? '' !!}</style>
-            <p class="card-text">{!! $post->content ?? '' !!}</p>     
+        <div class="row justify-content-between">
+            
+            <div class="col-lg-5 card_sides_innar_photo_1 text-white">
+            <h3 class="upper text-white pb-3"><span>{!! $post->excerpt ?? '' !!} </span></h3>
+             {!! $post->content ?? '' !!} 
+            </div>
+            <div class="col-lg-6 card_sides_innar_photo">
+                <img src="{!! asset('public/uploads/' . $post->thumbnail_path) ?? '' !!}" class="img-fluid rounded " alt="" />
+            </div>
 
         </div>
     </div>
@@ -69,16 +78,30 @@
 
         <div class="row">
             <div class="col-lg-12 pb-5">
-                <h2 class="text-center text-white">EXPLORE A
-                    WORLD OF <br>
-                    EXCLUSIVE PRIVILEGES</h2>
+                <h2 class="text-center text-white">{!! $post->option_1 !!}</h2>
             </div>
             <div class="col-lg-12 exclusive_off cards_credit">
-
-                {!! $post->more_option_2 ?? '' !!}
+                @php
+                $posttype = $post->slug."-features";
+                @endphp
+                
+                @foreach(getPostsByType($posttype) as $postf)
+                 
+                 <div class="card p-0 hover01 aos-init aos-animate" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                    <figure><img class="card-img-top" src="{!! asset('public/uploads/' . $postf->thumbnail_path) ?? '' !!}"></figure>
+                    <div class="card-body ">
+                        <h5 class="card-title text-center text-white">{!! $postf->title !!}</h5>
+                        <div class="card-text text-white features_benifit_card">{!! $postf->content !!}</div>
+                    </div>
+                </div>
+                
+                @endforeach 
 
             </div>
-
+            
+            <div class="card-text text-white mt-5">
+            {!! $post->more_option_2 ?? '' !!}
+            </div>
         </div>
     </div>
 </section>

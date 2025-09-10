@@ -99,8 +99,10 @@ if (!function_exists('getPostsByType')) {
      */
     function getPostsByType($post_type)
     {
+        $posttype = Posttype::where('slug',$post_type)->first();
         // Ensure the Post model is imported or use the fully qualified class name
-        $post = Post::where('post_type', $post_type)->where('status', 1)->get();
+        //$post = Post::where('post_type', $post_type)->where('status', 1)->get();
+        $post = Post::orderBy('position','ASC')->where('status','1')->where('post_type',$post_type)->paginate($posttype->paginate);
         return $post ? $post : '';
     }
 }
@@ -109,7 +111,7 @@ if (!function_exists('getAllPosttype')) {
     function getAllPosttype()
     {
         // Ensure the Post model is imported or use the fully qualified class name
-        $post = Posttype::where('status', 1)->get();
+        $post = Posttype::orderBy('name','ASC')->where('status', 1)->get();
         return $post ? $post : '';
     }
 }

@@ -100,7 +100,18 @@ class HomeController extends Controller
     public function postType($post_type){
         $posttype = Posttype::where('slug',$post_type)->first();
         //dd($posttype);
-        $posts = Post::orderBy('position','ASC')->where('status','1')->where('post_type',$post_type)->paginate($posttype->paginate);         
+        
+        //$posts = Post::orderBy('position','ASC')->where('status','1')->where('post_type',$post_type)->paginate($posttype->paginate); 
+        
+        $posts = Post::where('status', '1')
+               ->where('post_type', $post_type)
+               ->orderBy('position', 'ASC')//->get();
+               //->orderBy('id', 'DESC') // fallback
+               ->paginate($posttype->paginate);
+               
+        //dd($posts);
+
+        
         $categories = Category::all(); 
         //$postD = DB::table('posts')->select('category_id')->distinct()->pluck('category_id');
         $postD = DB::table('posts')->where('post_type', $post_type)->select('category_id')->distinct()->pluck('category_id');

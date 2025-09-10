@@ -18,9 +18,10 @@
         <link href="{{ asset('public/front/meghna/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
         <link href="{{ asset('public/front/meghna/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
         <link href="{{ asset('public/front/meghna/css/main.css')}}" rel="stylesheet" crossorigin="anonymous"> 
-
+        <link href="{{ asset('public/front/meghna/css/aos.css')}}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     </head>
-    <body class="index-page">
+    <body class="index-page @auth() login @endauth">
         @getHeader()                
         @yield('content')               
         @getFooter()
@@ -37,5 +38,9 @@
         <!-- Main JS File --> 
         <script src="{{ asset('public/front/meghna/js/main.js')}}" crossorigin="anonymous"></script>
         <script src="{{ asset('public/front/meghna/js/script.js')}}" crossorigin="anonymous"></script>
+        <script src="{{ asset('public/front/meghna/js/aos.js')}}" crossorigin="anonymous"></script> 
+        <script>
+          AOS.init();
+        </script>
     </body>
 </html>

@@ -19,7 +19,7 @@
                             <div class="valetineicon">
                                 {!! $post->pt_content !!}
                             </div>
-                            <h4 class="text-uppercase">{{$post->name}}</h4>
+                            <h4 class="text-uppercase">{{$post->name}} </h4>
                         </div>
                     </a>
                 </div>

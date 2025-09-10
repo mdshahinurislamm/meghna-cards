@@ -15,7 +15,7 @@
     <div class="carousel-item {{$cnt == 1 ? 'active':''}}" data-bs-interval="2000">
       <div class="scrollit">
         <a data-scroll="true" href="{{url('/posts/current-existing-offers')}}" class="btn btn-primary">
-          Current Existing Offers<svg version="1.1"
+          Current Exciting Offers<svg version="1.1"
             xmlns="http://www.w3.org/2000/svg" width="32" height="32"
             viewBox="0 0 32 32"> <path fill="#00294f"
               d="M7.84 9.333l8.16 8.241 8.16-8.241 2.507 2.537-10.667 10.796-10.667-10.796 2.507-2.537z"></path></svg></a>
